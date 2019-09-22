@@ -1,0 +1,33 @@
+package stack;
+
+import java.util.Stack;
+
+public class DuplicateParanthesis {
+
+	public static void main(String aa[]) {
+		String st = "((A+B)+((x))";
+		System.out.println(findDupParan(st));
+	}
+
+	public static boolean findDupParan(String str) {
+		char[] strCharArray = str.toCharArray();
+		Stack<Character> stack = new Stack();
+
+		for (char c : strCharArray) {
+			if (c != ')') {
+				stack.push(c);
+			} else {
+
+				if (stack.peek() == '(') {
+					return true;
+				}
+
+				while (stack.peek() != '(') {
+					stack.pop();
+				}
+				stack.pop();
+			}
+		}
+		return false;
+	}
+}
